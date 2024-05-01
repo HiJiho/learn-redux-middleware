@@ -10,6 +10,7 @@ const DECREASE = "counter/DECREASE";
 export const increase = () => ({ type: INCREASE });
 export const decrease = () => ({ type: DECREASE });
 
+// 액션 생성 함수
 // 1초 뒤에 Increase 또는 decrease 함수를 디스패치
 export const increaseAsync = () => (dispatch) => {
 	setTimeout(() => {
