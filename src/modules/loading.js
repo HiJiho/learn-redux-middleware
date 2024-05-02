@@ -18,6 +18,7 @@ export const finishLoading = createAction(
 
 const initialState = {};
 
+// 리듀서 정의
 const loading = handleActions(
 	{
 		[START_LOADING]: (state, action) => ({
