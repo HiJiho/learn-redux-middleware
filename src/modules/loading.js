@@ -19,6 +19,7 @@ export const finishLoading = createAction(
 const initialState = {};
 
 // 리듀서 정의
+// [action.payload] === stratLoading() 호출 시 인자
 const loading = handleActions(
 	{
 		[START_LOADING]: (state, action) => ({
