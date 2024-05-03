@@ -14,7 +14,7 @@ const SampleContainer = ({
 	// 클래스 형태 컴포넌트였다면 componentDidMount
 	useEffect(() => {
 		getPost(1);
-		getUsers(1);
+		getUsers();
 	}, [getPost, getUsers]);
 	return (
 		<Sample
