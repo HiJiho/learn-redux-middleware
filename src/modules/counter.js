@@ -1,6 +1,13 @@
 // counter 리덕스 모듈
 import { createAction, handleActions } from "redux-actions";
-import { delay, put, takeEvery, takeLatest, select } from "redux-saga/effects";
+import {
+	delay,
+	put,
+	takeEvery,
+	takeLatest,
+	select,
+	throttle,
+} from "redux-saga/effects";
 
 // 액션 타입 선언
 const INCREASE = "counter/INCREASE";
@@ -30,7 +37,9 @@ function* decreaseSaga() {
 
 export function* counterSaga() {
 	// takeEvery는 들어오는 모든 액션에 대해 특정 작업을 처리
-	yield takeEvery(INCREASE_ASYNC, increaseSaga);
+	// yield takeEvery(INCREASE_ASYNC, increaseSaga);
+	// saga가 호출되는 주기 제한하기 -> 3초에 한 번
+	yield throttle(3000, INCREASE_ASYNC, increaseSaga);
 	// takeLatest는 기존에 진행 중이던 작업이 있다면 취소 처리하고
 	// 가장 마지막으로 실행된 작업만 수행
 	yield takeLatest(DECREASE_ASYNC, decreaseSaga);
